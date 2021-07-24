@@ -1,0 +1,76 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:16.5.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - run:
+          name: Lint
+          command: yarn lint
+      - run:
+          name: Run tests with coverage
+          command: yarn coverage
+  deploy-integration:
+    docker:
+      - image: cimg/node:16.5.0
+    steps:
+      - checkout
+      - run:
+          name: Install devDependencies
+          command: yarn install --only=development
+      - run:
+          name: Build
+          command: yarn build
+      - run:
+          name: Release
+          command: yarn semantic-release
+  deploy-staging:
+    docker:
+      - image: cimg/node:16.5.0
+    steps:
+      - checkout
+      - run: git checkout -b release || checkout release
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn docker:build
+      - run: yarn semantic-release
+      # incrémente les versions
+      # créé l'image avec le bon tag
+      # pousse l'image
+  deploy-production:
+    docker:
+      - image: cimg/node:16.5.0
+    steps:
+      - checkout
+      - run: git checkout release
+      - run: git commit --amend -m "BREAKING CHANGE"
+      - run: git checkout develop && git merge release
+      - run: git checkout master && git merge release && git tag && git push --tags
+      - run: git branch -D release && git push origin release
+      - run: yarn semantic-release
+      # incrémente les versions
+      # créé l'image avec le bon tag
+      # pousse l'image
+
+workflows:
+  version: 2
+  b2c-workflow:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore:
+                - master
+      - deploy-integration:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore:
+                - release
+                - master

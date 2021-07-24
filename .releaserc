@@ -1,0 +1,10 @@
+{
+  "branches": ["develop"],
+  "plugins": [
+    ["semantic-release-heroku", {
+      "npmVersion": true,
+      "name": "techla-whiteapp"
+    }],
+    "@semantic-release/changelog"
+  ]
+}
