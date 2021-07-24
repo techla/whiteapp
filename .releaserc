@@ -1,5 +1,5 @@
 {
-  "branches": ["master", {"name": "develop", "prerelease": true}],
+  "branches": ["develop"],
   "plugins": [
     ["@semantic-release/exec", {
       "prepareCmd": "docker build -t username/imagename ."
