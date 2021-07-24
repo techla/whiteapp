@@ -1,10 +1,11 @@
 {
   "branches": ["master", {"name": "develop", "prerelease": true}],
   "plugins": [
-    ["semantic-release-heroku", {
-      "npmVersion": true,
-      "name": "techla-whiteapp"
+    ["@semantic-release/exec", {
+      "prepareCmd": "docker build -t username/imagename ."
     }],
-    "@semantic-release/changelog"
+    ["semantic-release-docker", {
+      "name": "username/imagename"
+    }]
   ]
 }
