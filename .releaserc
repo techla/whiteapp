@@ -1,9 +1,6 @@
 {
   "branches": ["develop"],
   "plugins": [
-    ["@semantic-release/exec", {
-      "prepareCmd": "docker build -t username/imagename ."
-    }],
     ["semantic-release-docker", {
       "name": "username/imagename"
     }]
