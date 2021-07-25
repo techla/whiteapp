@@ -1,8 +1,11 @@
 {
   "branches": ["develop"],
   "plugins": [
+    ["@semantic-release/exec", {
+      "prepareCmd": "yarn docker:build"
+    }],
     ["semantic-release-docker", {
-      "name": "username/imagename"
+      "name": "techla/whiteapp"
     }]
   ]
 }
