@@ -8,6 +8,6 @@ COPY ./dist ${WORKDIR}
 COPY ./entrypoint.sh ${WORKDIR}
 RUN ["chmod", "+x", "/opt/whiteapp/entrypoint.sh"]
 
-RUN yarn
+RUN yarn install --production
 
 ENTRYPOINT ["./entrypoint.sh"]
