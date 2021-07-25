@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/node:16.5.0
+      - image: circleci/node:14.16.1-stretch
     steps:
       - checkout
       - run:
@@ -20,6 +20,7 @@ jobs:
       - image: cimg/node:16.5.0
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Install devDependencies
           command: yarn install --only=development
