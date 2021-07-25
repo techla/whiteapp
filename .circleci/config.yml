@@ -20,7 +20,8 @@ jobs:
       - image: cimg/node:16.5.0
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 19.03.13
       - run:
           name: Install devDependencies
           command: yarn install --only=development
