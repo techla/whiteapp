@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Build app
           command: yarn build
-            - run:
+      - run:
           name: Build docker image
           command: yarn docker:build
       - run:
