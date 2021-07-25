@@ -1,5 +1,5 @@
 ARG NODE_VERSION
-FROM node:${NODE_VERSION}-alpine
+FROM node:14-alpine
 ENV WORKDIR /opt/webapp
 WORKDIR $WORKDIR
 RUN apk update && apk upgrade && apk add bash

@@ -14,7 +14,7 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.ts",
     "coverage": "jest --coverage",
-    "docker:build": "docker build . --build-arg NODE_VERSION=$(node --version | cut -d . -f 2)",
+    "docker:build": "docker build . --build-arg NODE_VERSION=$(node --version | cut -d - -f 2)",
     "semantic-release": "semantic-release"
   },
   "repository": {
