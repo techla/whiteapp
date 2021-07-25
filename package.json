@@ -14,7 +14,7 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.ts",
     "coverage": "jest --coverage",
-    "docker:build": "docker build . --build-arg NODE_VERSION=$(node --version | cut -d - -f 2) -t techla/whilteapp:lastest",
+    "docker:build": "docker build . --build-arg NODE_VERSION=$(node --version | cut -d - -f 2) -t techla/whilteapp:latest",
     "semantic-release": "semantic-release"
   },
   "repository": {
