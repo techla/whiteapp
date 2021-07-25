@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: circleci/node:14.16.1-stretch
+      - image: cimg/node:16.5.0
     steps:
       - checkout
       - run:
