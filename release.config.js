@@ -1,7 +1,7 @@
 const {GIT_BRANCH: branch} = process.env;
 
 module.exports = {
-  branches: ["master", "release", {name: "develop", prerelease: true}],
+  branches: ["master", "release", {name: "develop", prerelease: true}, {name: "feature/*", prerelease: true}],
   plugins: /^develop|(feature|bugfix)\/(BE|CC|SHOPPING)\.\d*\..*$/.test(branch) ? [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
