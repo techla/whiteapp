@@ -14,7 +14,7 @@ module.exports = {
         [
           '@semantic-release/exec',
           {
-            prepare:
+            prepareCmd:
               branch === 'develop'
                 ? 'yarn heroku:create techla-whiteapp'
                 : `yarn heroku:create techla-whiteapp-${branch.match(/\d+/g)[0]}`,
