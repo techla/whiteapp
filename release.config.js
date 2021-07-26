@@ -1,14 +1,15 @@
 const { GIT_BRANCH: branch } = process.env;
-const isDevBranch = /^develop|(feature|bugfix)\/(BE|CC|SHOPPING)\.\d*\..*$/.test(branch);
+const isDevelopmentBranch = /^develop|(feature|bugfix)\/(BE|CC|SHOPPING)\.\d*\..*$/.test(branch);
 
 module.exports = {
   branches: [
     'master',
     'release',
-    { name: 'develop', prerelease: 'alpha' },
-    { name: 'feature/*', prerelease: 'beta' },
+    { name: 'develop', prerelease: 'rc' },
+    { name: 'feature/*', prerelease: 'alpha' },
+    { name: 'bugfix/*', prerelease: 'beta' },
   ],
-  plugins: isDevBranch
+  plugins: isDevelopmentBranch
     ? [
         [
           '@semantic-release/exec',
@@ -28,7 +29,6 @@ module.exports = {
                 : `techla-whiteapp-${branch.match(/\d+/g)[0]}`,
           },
         ],
-        '@semantic-release/changelog',
       ]
     : [
         [
@@ -37,5 +37,6 @@ module.exports = {
             name: 'techla/whiteapp',
           },
         ],
+        '@semantic-release/changelog',
       ],
 };
