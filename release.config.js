@@ -16,8 +16,8 @@ module.exports = {
           {
             prepareCmd:
               branch === 'develop'
-                ? 'yarn heroku:create techla-whiteapp'
-                : `yarn heroku:create techla-whiteapp-${branch.match(/\d+/g)[0]}`,
+                ? 'yarn heroku:create techla-whiteapp || true'
+                : `yarn heroku:create techla-whiteapp-${branch.match(/\d+/g)[0]} || true`,
           },
         ],
         [

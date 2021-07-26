@@ -15,7 +15,7 @@
     "lint": "eslint . --ext .js,.ts",
     "coverage": "jest --coverage",
     "docker:build": "docker build . --build-arg NODE_VERSION=$(node --version | cut -d - -f 2) -t techla/whiteapp:latest",
-    "heroku:create": "heroku create",
+    "heroku:create": "curl https://cli-assets.heroku.com/install.sh | sh && heroku create",
     "semantic-release": "cross-env GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD) semantic-release"
   },
   "repository": {
@@ -36,7 +36,6 @@
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^24.4.0",
-    "heroku": "^7.56.1",
     "husky": "^7.0.1",
     "jest": "^27.0.6",
     "pinst": "^2.1.6",
