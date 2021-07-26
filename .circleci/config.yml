@@ -29,9 +29,6 @@ jobs:
           name: Build app
           command: yarn build
       - run:
-          name: Build docker image
-          command: yarn docker:build
-      - run:
           name: Release
           command: yarn semantic-release
   deploy-staging:
@@ -39,14 +36,20 @@ jobs:
       - image: cimg/node:16.5.0
     steps:
       - checkout
-      - run: git checkout -b release || checkout release
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn docker:build
-      - run: yarn semantic-release
-      # incrémente les versions
-      # créé l'image avec le bon tag
-      # pousse l'image
+      - setup_remote_docker:
+        version: 19.03.13
+      - run:
+          name: Install devDependencies
+          command: yarn install --only=development
+      - run:
+          name: Build app
+          command: yarn build
+      - run:
+          name: Build docker image
+          command: yarn docker:build
+      - run:
+          name: Release
+          command: yarn semantic-release
   deploy-production:
     docker:
       - image: cimg/node:16.5.0
