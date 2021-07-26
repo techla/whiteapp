@@ -24,7 +24,6 @@ const dockerPlugins = [
   ['@semantic-release/exec', { prepareCmd: 'yarn docker:build ' }],
   '@semantic-release/commit-analyzer',
   ['semantic-release-docker', { name: 'techla/whiteapp' }],
-  '@semantic-release/changelog',
 ];
 
 module.exports = {
