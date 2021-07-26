@@ -16,7 +16,7 @@ module.exports = {
             prepare:
               branch === 'develop'
                 ? 'yarn heroku:create techla-whiteapp'
-                : `yarn heroku:create  techla-whiteapp-${branch.match(/\d+/g)[0]}`,
+                : `yarn heroku:create techla-whiteapp-${branch.match(/\d+/g)[0]}`,
           },
         ],
         [
