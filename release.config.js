@@ -6,8 +6,10 @@ const herokuPlugins = [
     {
       prepareCmd:
         branch === 'develop'
-          ? 'yarn heroku:create techla-whiteapp || true'
-          : `yarn heroku:create techla-whiteapp-${branch.match(/\d+/g)[0]} || true`,
+          ? 'yarn heroku:create techla-whiteapp > /dev/null 2>&1 || true'
+          : `yarn heroku:create techla-whiteapp-${
+              branch.match(/\d+/g)[0]
+            } > /dev/null 2>&1 || true`,
     },
   ],
   '@semantic-release/commit-analyzer',
