@@ -1,8 +1,0 @@
-{
-  "branches": ["master", {name: 'develop', prerelease: true}],
-  "plugins": [
-    ["semantic-release-docker", {
-      "name": "techla/whiteapp"
-    }]
-  ]
-}
