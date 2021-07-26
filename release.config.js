@@ -20,6 +20,7 @@ module.exports = {
                 : `yarn heroku:create techla-whiteapp-${branch.match(/\d+/g)[0]} || true`,
           },
         ],
+        '@semantic-release/commit-analyzer',
         [
           'semantic-release-heroku',
           {
