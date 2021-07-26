@@ -10,7 +10,7 @@ module.exports = {
   ],
   plugins: isDevBranch ? [
     ["semantic-release-heroku", {
-      "name": branch === 'develop' ? 'techla-whiteapp' : `'techla-whiteapp'-${branch.match(/\d+/g)[0]}`
+      "name": branch === 'develop' ? 'techla-whiteapp' : `techla-whiteapp-${branch.match(/\d+/g)[0]}`
     }],
     "@semantic-release/changelog"
   ] : [
