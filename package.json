@@ -15,7 +15,7 @@
     "lint": "eslint . --ext .js,.ts",
     "coverage": "jest --coverage",
     "docker:build": "docker build . --build-arg NODE_VERSION=$(node --version | cut -d - -f 2) -t techla/whiteapp:latest",
-    "semantic-release": "semantic-release"
+    "semantic-release": "cross-env GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD) semantic-release"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.2.0",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
