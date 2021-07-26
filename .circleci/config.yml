@@ -67,7 +67,7 @@ jobs:
 
 workflows:
   version: 2
-  workflow:
+  cmflow:
     jobs:
       - test:
           filters:
