@@ -6,7 +6,7 @@ module.exports = {
     "master",
     "release",
     {name: "develop", prerelease: 'alpha'},
-    {name: "[feature/*, bugfix/*]", prerelease: 'beta'}
+    {name: "feature/*", prerelease: 'beta'}
   ],
   plugins: isDevBranch ? [
     ["semantic-release-heroku", {
