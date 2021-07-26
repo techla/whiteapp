@@ -5,9 +5,9 @@ module.exports = {
   branches: [
     "master",
     "release",
-    {name: "develop", prerelease: true},
-    {name: "feature/*", prerelease: true},
-    {name: "bugfix/*", prerelease: true}],
+    {name: "develop", prerelease: 'beta'},
+    {name: "feature/*", prerelease: 'beta'},
+    {name: "bugfix/*", prerelease: 'beta'}],
   plugins: isDevBranch ? [
     ["semantic-release-heroku", {
       "name": branch === 'develop' ? 'techla-whiteapp' : `'techla-whiteapp'-${branch.match(/\d+/g)[0]}`
