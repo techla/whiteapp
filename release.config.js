@@ -1,8 +1,8 @@
 const {GIT_BRANCH: branch} = process.env;
 
 module.exports = {
-  branches: ["master", {name: 'develop', prerelease: true}],
-  plugins: branch === 'develop' ? [
+  branches: ["master", "release", {name: /develop|(feature|bugfix)\/(BE|CC|SHOPPING)\.\d*\..*/, prerelease: true}],
+  plugins: branch === /^develop|(feature|bugfix)\/(BE|CC|SHOPPING)\.\d*\..*$/.test(branch) ? [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     ["semantic-release-heroku", {
